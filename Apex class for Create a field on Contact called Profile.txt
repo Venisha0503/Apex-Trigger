@@ -1,0 +1,33 @@
+public class Account{
+private String FirstName;
+private String LastName;
+private String AccountId;
+private String AccountWebSite;
+}
+public void updateProfile (Account newAccount){
+try{
+list<Account> changedAccountList= new ArrayList();
+Stringbuilder sb= new Stingbuilder();
+sb.append("SELECT*FROM CONTACT");
+List<Map<String,Object>> data= template.queryForList(sb.toString(),parameters);
+list<String> accountsIds =new ArrayList();
+for(Map<String,Objects> contactData: data){
+accountIds.add(contactData);
+}
+}
+for(int i=0; i<accountIds.size();i++){
+Stringbuilder sb=new Stringbuilder();
+sb.append("update Contact SET profile_c =:udatedVallue").append(WHERE AccountId IN").append(":active");
+MapSqlParameterSource parameters=new MapSqlParameterSource();
+parameters.addvalue("updateValue"<accountIds[i].website+"/"+accountIds[i].FirstName.split("")[0]+accountIds[i].LastName);
+parameters.addvalue("active",accountIds[i].AccountId);
+NamedparameterJdbcTemplate template=new NamedParameterJdbcTemplate(jdbcTemplate.getDataSource();
+template.queryForList(sb.toString(),parameters);
+}
+}
+catch(Excpetion Err){
+throw exception;
+}
+}
+
+

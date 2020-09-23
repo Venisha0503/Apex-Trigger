@@ -1,0 +1,8 @@
+@isTest
+public class TestContactclass {
+    @isTest private static void CreateTestContact()
+    {
+        Account Acc=new Account(Name='Vini',First_Name='Venisha',Last_Name='Suresh');
+        insert Acc;
+    }
+}

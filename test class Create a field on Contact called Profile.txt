@@ -1,0 +1,26 @@
+@isTest
+public class TestUpdateProfile {
+    @isTest
+    private static void ProfileUpdate(){
+        Account oldAcc = new Account(Name='Profile',First_Name='Venisha',Last_Name='Suresh');
+        insert oldAcc;
+        Contact oldCon=new Contact(FirstName='Nivetha',LastName='Rohit',AccountId=oldAcc.Id);
+        insert oldCon;
+        Test.startTest();
+        oldAcc.Website='www.gmail.com';
+        update oldAcc;
+        Test.stopTest();
+        
+    }
+    @isTest
+    private static void ProfileNotUpdate(){
+        Account newAcc = new Account(Name='Test Account',First_Name='Jeyanthi',Last_Name='Suresh');
+        insert newAcc;
+        Contact newCon=new Contact(FirstName='Whity',LastName='Angel',AccountId=newAcc.Id);
+        insert newCon;
+        Test.startTest();
+        System.assertEquals(null, newCon.Profile__c);
+        Test.stopTest();
+        
+    }
+}
